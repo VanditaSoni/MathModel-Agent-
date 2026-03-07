@@ -10,4 +10,4 @@ def solve_equation(equation_text):
 
     result = solve(equation)
 
-    return result
+    return result[0]
