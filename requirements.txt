@@ -2,3 +2,4 @@ streamlit
 sympy
 numpy
 pandas
+google-generativeai
