@@ -1,19 +1,35 @@
-import re
+import os
+from google import genai
+from dotenv import load_dotenv
+
+# load API key
+load_dotenv()
+
+client = genai.Client(api_key=os.getenv("AIzaSyCYlwFhrcF6oPI4MZrBDOnjgGBPShhV9y8"))
 
 def parse_problem(problem_text):
 
-    # convert text to lowercase
-    text = problem_text.lower()
+    prompt = f"""
+Convert the following math word problem into a mathematical equation using variable x.
 
-    numbers = re.findall(r'\d+', text)
-    numbers = [int(n) for n in numbers]
+Problem:
+{problem_text}
 
-    # example: "a number plus 5 is 10"
-    if "plus" in text and "is" in text and len(numbers) == 2:
-        return f"x + {numbers[0]} = {numbers[1]}"
+Rules:
+- Only return the equation
+- Use variable x
+- Do not explain
 
-    # example: "a number minus 3 is 7"
-    if "minus" in text and "is" in text and len(numbers) == 2:
-        return f"x - {numbers[0]} = {numbers[1]}"
+Example:
+Input: A number plus 5 is 10
+Output: x + 5 = 10
+"""
 
-    return None
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt
+    )
+
+    equation = response.text.strip()
+
+    return equation
