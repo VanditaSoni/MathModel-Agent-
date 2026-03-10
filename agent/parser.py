@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 # load API key
 load_dotenv()
 
-client = genai.Client(api_key=os.getenv("AIzaSyCYlwFhrcF6oPI4MZrBDOnjgGBPShhV9y8"))
+client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def parse_problem(problem_text):
 
