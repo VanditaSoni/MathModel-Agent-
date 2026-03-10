@@ -38,4 +38,4 @@ def solve_equation(equations_text):
     # system of equations
     else:
         result = solve(equations, (x, y))
-        return result
+        return result[0]
