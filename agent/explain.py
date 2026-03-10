@@ -10,7 +10,7 @@ def explain_solution(problem, equations, solution):
 
     prompt = f"""
 Explain step-by-step how the following math problem is solved.
-Explain the reasoning behind each step and how the equations are derived from the problem.
+Solution should be not too small and not too long keep it easy and medium detailed.
 Explain the questions asked in the problem and how they relate to the equations and solution.
 Explain the final solution and how it answers the question asked in the problem.
 
