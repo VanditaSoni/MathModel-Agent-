@@ -33,9 +33,9 @@ def solve_equation(equations_text):
     # single equation
     if len(equations) == 1:
         result = solve(equations[0])
-        return result
+        return result[0]
 
     # system of equations
     else:
         result = solve(equations, (x, y))
-        return result[0]
+        return result
