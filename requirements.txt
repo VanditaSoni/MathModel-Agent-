@@ -3,5 +3,4 @@ sympy
 numpy
 pandas
 google-genai
-google-generativeai
 python-dotenv
