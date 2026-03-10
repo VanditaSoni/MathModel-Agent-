@@ -1,4 +1,13 @@
+import re
 from sympy import symbols, Eq, solve
+
+def format_equation(expr):
+    """
+    Convert expressions like 2x → 2*x
+    """
+    expr = re.sub(r'(\d)([a-zA-Z])', r'\1*\2', expr)
+    return expr
+
 
 def solve_equation(equations_text):
 
@@ -14,8 +23,8 @@ def solve_equation(equations_text):
 
             left, right = line.split("=")
 
-            left = left.strip()
-            right = right.strip()
+            left = format_equation(left.strip())
+            right = format_equation(right.strip())
 
             eq = Eq(eval(left), eval(right))
 
