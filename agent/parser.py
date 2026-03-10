@@ -24,6 +24,13 @@ Example:
 Input: A number plus 5 is 10
 Output: x + 5 = 10
 """
+    # example: "a number plus 5 is 10"
+    if "plus"or "add" in text and "is" in text and len(numbers) == 2:
+        return f"x + {numbers[0]} = {numbers[1]}"
+
+    # example: "a number minus 3 is 7"
+    if "minus" or "subtract" in text and "is" in text and len(numbers) == 2:
+        return f"x - {numbers[0]} = {numbers[1]}"
 
     response = client.models.generate_content(
         model="gemini-2.5-flash",
