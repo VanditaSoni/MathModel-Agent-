@@ -1,21 +1,32 @@
 from sympy import symbols, Eq, solve
 
+def solve_equation(equations_text):
 
-def solve_equation(equation_text):
-    """
-    Solve equation using SymPy
-    """
+    x, y = symbols('x y')
 
-    x = symbols('x')
+    equations = []
 
-    # split equation
-    left, right = equation_text.split("=")
+    lines = equations_text.split("\n")
 
-    left = left.strip()
-    right = right.strip()
+    for line in lines:
 
-    equation = Eq(eval(left), eval(right))
+        if "=" in line:
 
-    result = solve(equation)
+            left, right = line.split("=")
 
-    return result[0]
+            left = left.strip()
+            right = right.strip()
+
+            eq = Eq(eval(left), eval(right))
+
+            equations.append(eq)
+
+    # single equation
+    if len(equations) == 1:
+        result = solve(equations[0])
+        return result
+
+    # system of equations
+    else:
+        result = solve(equations, (x, y))
+        return result
